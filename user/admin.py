@@ -10,7 +10,7 @@ class UserAdmin(BaseUserADmin):
     ordering = ['id']
     list_display = ['phone_number', 'is_staff']
     fieldsets = [
-        (None, {'fields': ('phone_number', 'password')}),
+        (None, {'fields': ('phone_number', 'email', 'password')}),
         ('Permissions',
             {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         ('Dates', {'fields': ('last_login', 'date_joined', 'date_updated')})
@@ -18,7 +18,7 @@ class UserAdmin(BaseUserADmin):
     add_fieldsets = [
         (None, {
             'fields':
-            ('phone_number', 'password1', 'password2'),
+            ('phone_number','email', 'password1', 'password2'),
             'classes': ('wide',),
             }),
         ('Permissions',

@@ -6,6 +6,7 @@ from .managers import CustomUSerManager
 class User(AbstractBaseUser, PermissionsMixin):
     '''Custom user model wth phone number.'''
     phone_number = models.CharField(max_length=11, unique=True)
+    email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
