@@ -38,9 +38,18 @@ class Movie(models.Model):
     def __str__(self):
         return self.name
 
+    @property
     def get_average_score(self):
         '''Getting average score of ratings of the movie.'''
-        pass
+        ratings = self.movie_ratings.all()
+        all_scores = list()
+        for s in ratings:
+            all_scores.append(s.score)
+
+        medium = sum(all_scores) / len(all_scores)
+
+        return medium
+
 
 class Rating(models.Model):
     '''Model for rating.'''
@@ -50,5 +59,8 @@ class Rating(models.Model):
                               on_delete=models.CASCADE)
     score = models.IntegerField(default=0, validators=[validate_score])
 
+    class Meta:
+        unique_together = ('user', 'movie')
+
     def __str__(self):
-        return str(self.rate)
+        return str(self.score)
