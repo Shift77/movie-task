@@ -37,5 +37,6 @@ urlpatterns = [
     path('api/v1/token/obtain/', TokenObtainPairView.as_view()),
     path('api/v1/token/refresh/', TokenObtainPairView.as_view()),
 
-    path('api/v1/', include('user.urls')),
+    path('api/v1/user/', include('user.urls')),
+    path('api/v1/', include('movie.urls')),
 ]
