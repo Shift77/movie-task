@@ -45,10 +45,10 @@ class Movie(models.Model):
         all_scores = list()
         for s in ratings:
             all_scores.append(s.score)
-
-        medium = sum(all_scores) / len(all_scores)
-
-        return medium
+        if all_scores:
+            medium = sum(all_scores) / len(all_scores)
+            return medium
+        return 'N/A'
 
 
 class Rating(models.Model):

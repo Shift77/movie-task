@@ -53,7 +53,7 @@ class MovieViewSet(viewsets.ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
     def update(self, request, *args, **kwargs):
-        if self.get_object.user == self.request.user:
+        if self.get_object().user == self.request.user:
             return super().update(request, *args, **kwargs)
 
         return Response(
@@ -62,7 +62,7 @@ class MovieViewSet(viewsets.ModelViewSet):
             )
 
     def partial_update(self, request, *args, **kwargs):
-        if self.get_object.user == self.request.user:
+        if self.get_object().user == self.request.user:
             return super().partial_update(request, *args, **kwargs)
 
         return Response(
@@ -98,7 +98,7 @@ class RatingViewSet(mixins.CreateModelMixin,
         return [permission() for permission in self.permission_classes]
 
     def update(self, request, *args, **kwargs):
-        if self.get_object.user == self.request.user:
+        if self.get_object().user == self.request.user:
             return super().update(request, *args, **kwargs)
 
         return Response(
@@ -107,7 +107,7 @@ class RatingViewSet(mixins.CreateModelMixin,
             )
 
     def partial_update(self, request, *args, **kwargs):
-        if self.get_object.user == self.request.user:
+        if self.get_object().user == self.request.user:
             return super().partial_update(request, *args, **kwargs)
 
         return Response(
